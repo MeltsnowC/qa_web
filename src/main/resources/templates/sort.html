@@ -1,0 +1,47 @@
+<#include "/header.html"/>
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/detail.css">
+
+<div class="zg-wrap zu-main clearfix " role="main">
+    <div class="zu-main-content">
+        <div class="zu-main-content-inner">
+            <div class="zg-section" id="zh-home-list-title">
+                <i class="zg-icon zg-icon-feedlist"></i><a href="/pullfeeds" class="zg-link-normal">User ranking number</a>
+                <span class="zg-right zm-noti-cleaner-setting" style="list-style:none">
+                        <a href="/" class="zg-link-gray-normal">
+                            <i class="zg-icon zg-icon-settings"></i>Settings
+                        </a>
+                    </span>
+            </div>
+            <div class="zu-main-feed-con navigable" data-feedtype="topstory" id="zh-question-list">
+                <div id="js-home-feed-list" class="zh-general-list topstory clearfix">
+
+                    <div class="feed-item folding feed-item-hook feed-item-1">
+                        <div class="feed-item-inner">
+                            <div class="feed-main">
+                                <div class="feed-content" data-za-module="PostItem">
+                                    <div class="entry-body post-body js-collapse-body">
+                                        <div class="post-content">
+                                            <#list vos as vo>
+                                            <div class="zh-summary summary clearfix">
+                                        ${vo.paiming}  ${vo.username}  score:${vo.userscore}
+                                                <a href="/user/${vo.userid!''}" class="toggle-expand">Display all</a>
+                                            </div>
+                                        </#list>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            <a href="javascript:;" id="zh-load-more" class="zg-btn-white zg-r3px zu-button-more">More</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<#include "/js.html"/>
+<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
+<#include "/footer.html"/>

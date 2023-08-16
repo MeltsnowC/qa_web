@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author liyanjiao02
- * @date 2022/1/14
+ * @author chenghongyi
+ * @date 2023/08/06
  */
 
 public class AuthUtils {

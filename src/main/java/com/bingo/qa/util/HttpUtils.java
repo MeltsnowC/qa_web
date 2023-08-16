@@ -24,8 +24,8 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author wangfeng78/AbeanCC
- * @date 2021/12/21 15:39
+ * @author chenghongyi/AbeanCC
+ * @date 2022/12/21 15:39
  */
 @Slf4j
 public class HttpUtils {

@@ -24,7 +24,7 @@ public class CrawlTask {
         this.crawlService = crawlService;
     }
 
-    @Scheduled(cron = "0 0 10 * * ?")
+    @Scheduled(cron = "0 20 16 * * ?")
     public void crawl() {
         LOGGER.info("start crawling");
 

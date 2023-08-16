@@ -20,15 +20,21 @@ import java.util.*;
 @Controller
 public class IndexController {
 
+    //用户服务：提供用户注册，用户登陆，用户注销，id查找用户，name查找用户
     private final UserService userService;
 
+    //问题服务：查找最近的问题，根据问题id查找问题，添加问题，更新问题评论数，获取问题数。
     private final QuestionService questionService;
 
+    //线程本地变量，保存users
     private final HostHolder hostHolder;
 
+    //关注相关服务：关注、取消关注、获取粉丝列表、获取用户所关注的用户列表（带和不带偏移的），获取某实体的粉丝数，获取某用户关注的用户数，判断是否是粉丝
     private final FollowService followService;
 
+    //评论相关服务：通过实体获取评论列表，添加评论，获取评论数量，根据id获取评论，根据用户id获取评论
     private final CommentService commentService;
+
 
     QuestionDAO questionDAO;
     TopUserDAO topUserDAO;
@@ -55,12 +61,12 @@ public class IndexController {
 
         //这里的bos是看用户是否属于top前20的用户，在top前20的用户界面前有五条推荐求解。如果不在top20里面则不会显示。
         List<Question> questionList = questionService.selectLatestQuestions(0, 0, quencount);
-        PriorityQueue<Question> MinProfitQ = new PriorityQueue<>(new RecommendController.MinProfitComparator());
+        PriorityQueue<Question> MinProfitQ = new PriorityQueue<>(new RecommendController.MinProfitComparator());//评论少的优先级高。
         for (Question question : questionList) {
             MinProfitQ.add(question);
         }
         List<ViewObject> bos = new ArrayList<>();
-        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();//保存top20的用户
         for (int j = 1; j < 21; j++) {
             set.add(topUserDAO.selectById(j).getUserid());
         }
@@ -86,10 +92,6 @@ public class IndexController {
         }
         model.addAttribute("bos", bos);
 
-
-
-
-
         return "index";
     }
 
@@ -111,6 +113,13 @@ public class IndexController {
         return vos;
     }
 
+    /**
+     * 根据url传入的userid，返回profileuser，返回给前端
+     * 简介信息，包括用户评论个数，粉丝个数，关注个数，以及该线程用户判断是否是查询userid的粉丝
+     * @param model
+     * @param userId
+     * @return
+     */
     @GetMapping(value = "/user/{userId}")
     public String userIndex(Model model,
                             @PathVariable("userId") int userId) {

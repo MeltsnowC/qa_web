@@ -80,6 +80,7 @@ public class CrawlServiceImpl implements CrawlService {
         // 获取文档document对象
         Document document = RequestUtil.getDocument(url, header);
         if (document != null) {
+            LOGGER.info("获取文档document对象");
             // 获取页面上所有question的a标签
             Elements elements = document.select("div#TopicsNode table td span.item_title a");
 

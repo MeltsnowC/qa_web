@@ -85,7 +85,6 @@ public class QuestionController {
                 eventProducer.fireEvent(new EventModel(EventType.ADD_QUESTION)
                         .setActorId(question.getUserId()).setEntityId(question.getId())
                         .setExt("title", question.getTitle()).setExt("content", question.getContent()));
-
                 return QaUtil.getJSONString(0);
             }
 

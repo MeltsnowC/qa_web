@@ -53,6 +53,7 @@ public class SensitiveServiceImpl implements InitializingBean, SensitiveService 
      * @param lineTxt
      */
     private void addWord(String lineTxt) {
+//        每个词是一个子树，每个节点是一个字或者一个字符。
         if (StringUtils.isEmpty(lineTxt)) {
             return;
         }

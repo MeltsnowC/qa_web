@@ -5,6 +5,7 @@ import com.bingo.qa.dao.UserDAO;
 import com.bingo.qa.model.HostHolder;
 import com.bingo.qa.model.LoginTicket;
 import com.bingo.qa.model.User;
+import com.sun.media.jfxmedia.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -43,6 +44,7 @@ public class PassportInterceptor implements HandlerInterceptor{
         String ticket = null;
         // 从request中取出ticket
         if (request.getCookies() != null) {
+            System.out.println(request.getCookies().toString());
             for (Cookie cookie : request.getCookies()) {
                 if ("ticket".equals(cookie.getName())) {
                     // 说明用户的请求携带有ticket
